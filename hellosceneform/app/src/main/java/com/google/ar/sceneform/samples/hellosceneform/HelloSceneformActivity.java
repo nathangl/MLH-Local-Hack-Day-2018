@@ -15,12 +15,18 @@
  */
 package com.google.ar.sceneform.samples.hellosceneform;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -29,6 +35,8 @@ import android.widget.Toast;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
+import com.google.ar.core.Pose;
+import com.google.ar.core.Session;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
@@ -43,6 +51,7 @@ public class HelloSceneformActivity extends AppCompatActivity {
 
   private ArFragment arFragment;
   private ModelRenderable andyRenderable;
+  private Assignments assignments;
 
   @Override
   @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
@@ -51,12 +60,61 @@ public class HelloSceneformActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+/*    assignments = new Assignments(this);
+
+      // Acquire a reference to the system Location Manager
+      LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+// Define a listener that responds to location updates
+      LocationListener locationListener = new LocationListener() {
+          public void onLocationChanged(Location location) {
+              // Called when a new location is found by the network location provider.
+              assignments.setLocation(location);
+          }
+
+          public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+          public void onProviderEnabled(String provider) {}
+
+          public void onProviderDisabled(String provider) {}
+      };
+
+      if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+              != PackageManager.PERMISSION_GRANTED) {
+          // Permission is not granted
+          // Register the listener with the Location Manager to receive location updates
+          locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+      }
+      else {
+          return;
+      }*/
+
+
+
+
     if (!checkIsSupportedDeviceOrFinish(this)) {
       return;
     }
 
     setContentView(R.layout.activity_ux);
     arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
+
+      float[] translation = new float[4];
+      translation[0] = 0;
+      translation[1] = 0;
+      translation[2] = 0;
+      translation[3] = 0;
+
+      float[] rotation = new float[4];
+      rotation[0] = 0;
+      rotation[1] = 0;
+      rotation[2] = 0;
+      rotation[3] = 0;
+
+      Pose pose = new Pose(translation,rotation);
+      Session sess = new Session(this);
+
+
 
     // When you build a Renderable, Sceneform loads its resources in the background while returning
     // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
@@ -90,6 +148,8 @@ public class HelloSceneformActivity extends AppCompatActivity {
           andy.setRenderable(andyRenderable);
           andy.select();
         });
+
+    //assignments.searchForState();
   }
 
   /**
