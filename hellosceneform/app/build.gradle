@@ -82,3 +82,19 @@ sceneform.asset('sampledata/models/andy.obj',
         'sampledata/models/andy.sfa',
         'src/main/res/raw/andy')
 
+
+
+sceneform.asset('sampledata/models/2.5-inch-line.obj',
+        'default',
+        'sampledata/models/2.5-inch-line.sfa',
+        'src/main/assets/2.5-inch-line')
+
+sceneform.asset('sampledata/models/5-inch-point.obj',
+        'default',
+        'sampledata/models/5-inch-point.sfa',
+        'src/main/assets/5-inch-point')
+
+sceneform.asset('sampledata/models/andy.obj',
+        'default',
+        'sampledata/models/andy.sfa',
+        'src/main/assets/andy')

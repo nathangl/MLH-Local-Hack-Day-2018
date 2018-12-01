@@ -1,4 +1,4 @@
-/*
+apply plugin: 'com.google.ar.sceneform.plugin'/*
  * Copyright 2018 Google LLC
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,3 +44,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+sceneform.asset('app/sampledata/models/5-inch-point.obj',
+        'default',
+        'app/sampledata/models/5-inch-point.sfa',
+        'src/main/assets/5-inch-point')
