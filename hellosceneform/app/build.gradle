@@ -69,6 +69,10 @@ dependencies {
     //implementation "com.google.ar.sceneform:core:1.5.1"
 
     implementation "com.android.support:appcompat-v7:27.1.1"
+
+
+    // ArcGIS
+    implementation 'com.esri.arcgisruntime:arcgis-android:100.4.0'
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'
