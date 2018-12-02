@@ -34,6 +34,10 @@ allprojects {
         google()
         jcenter()
         mavenLocal()
+        // Add the Esri public Bintray Maven repository
+        maven {
+            url 'https://esri.bintray.com/arcgis'
+        }
     }
 }
 
