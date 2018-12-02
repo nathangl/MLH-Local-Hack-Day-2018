@@ -35,6 +35,3 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-solarsystem/app/sampledata/models/2.5-inch-line/2.5-inch-line.sfa
-solarsystem/app/sampledata/models/5-inch-point/5-inch-point.sfa
-solarsystem/app/sampledata/models/andy/andy.sfa
